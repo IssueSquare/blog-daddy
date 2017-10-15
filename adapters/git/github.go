@@ -1,21 +1,39 @@
-package adapters
+package git
 
 import (
 	"encoding/json"
 	"net/http"
 )
 
-type Git struct{}
+type (
+	User struct {
+		User string `form:"user" json:"user" binding:"required"`
+		Repo string `form:"repo" json:"repo" binding:"required"`
+		Path string `form:"path" json:"path" binding:"required"`
+	}
 
-type GitRepoContent struct {
-	Name         string `json:"name"`
-	Type         string `json:"type"`
-	Sha          string `json:"sha"`
-	Download_Url string `json:"download_url"`
+	Git struct {
+		Endpoint string
+	}
+
+	GitRepoContent struct {
+		Name         string `json:"name"`
+		Type         string `json:"type"`
+		Sha          string `json:"sha"`
+		Download_Url string `json:"download_url"`
+	}
+)
+
+func NewGitHandler(e string) *Git {
+	git := new(Git)
+	git.Endpoint = e
+	return git
 }
 
-func (g GitHub) FetchRepoContents(p string) ([]GitRepoContent, error) {
-	resp, err := http.Get("https://api.github.com/users/shavenking/repos")
+func (g *Git) FetchRepoContents(u User) ([]GitRepoContent, error) {
+
+	dst := g.Endpoint + "/repos" + "/" + u.User + "/" + u.Repo + "/contents" + u.Path
+	resp, err := http.Get(dst)
 	if err != nil {
 		return nil, err
 	}
