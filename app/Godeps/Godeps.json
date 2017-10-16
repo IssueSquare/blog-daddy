@@ -1,15 +1,15 @@
 {
-	"ImportPath": "github.com/4406arthur/blog-daddy/app",
+	"ImportPath": "github.com/IssueSquare/blog-daddy/app",
 	"GoVersion": "go1.9",
 	"GodepVersion": "v79",
 	"Deps": [
 		{
-			"ImportPath": "github.com/4406arthur/blog-daddy/adapters/git",
-			"Rev": "65647f49e78c9fefe68c03d1f891c8387981c1e7"
+			"ImportPath": "github.com/IssueSquare/blog-daddy/adapters/git",
+			"Rev": "49e3e2813bbcec49b6917613a70b4408b2a0781a"
 		},
 		{
-			"ImportPath": "github.com/4406arthur/blog-daddy/providers/s3",
-			"Rev": "65647f49e78c9fefe68c03d1f891c8387981c1e7"
+			"ImportPath": "github.com/IssueSquare/blog-daddy/providers/s3",
+			"Rev": "49e3e2813bbcec49b6917613a70b4408b2a0781a"
 		},
 		{
 			"ImportPath": "github.com/fsnotify/fsnotify",
@@ -149,6 +149,10 @@
 			"Rev": "2009e44b6f182e34d8ce081ac2767622937ea3d4"
 		},
 		{
+			"ImportPath": "github.com/shurcooL/sanitized_anchor_name",
+			"Rev": "86672fcb3f950f35f2e675df2240550f2a50762f"
+		},
+		{
 			"ImportPath": "github.com/spf13/afero",
 			"Rev": "e67d870304c4bca21331b02f414f970df13aa694"
 		},
@@ -195,6 +199,11 @@
 			"ImportPath": "gopkg.in/go-playground/validator.v8",
 			"Comment": "v8.18.2",
 			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+		},
+		{
+			"ImportPath": "gopkg.in/russross/blackfriday.v2",
+			"Comment": "v2.0.0",
+			"Rev": "cadec560ec52d93835bf2f15bd794700d3a2473b"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
