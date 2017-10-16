@@ -1,8 +1,10 @@
 package s3
 
 import (
-	"github.com/minio/minio-go"
+	"io"
 	"log"
+
+	"github.com/minio/minio-go"
 )
 
 type (
@@ -26,20 +28,18 @@ func NewS3Provider(endpoint, accessKey, secretKey string) *S3 {
 	return s3
 }
 
-func (s *S3) Upload(bucketName, filePath string) error {
+func (s *S3) Upload(bucketName, objectName string, reader io.Reader) error {
 	// Initialize minio client object.
-	minioClient, err := minio.New(s.endpoint, s.accessKey, s.secretKey, true)
+	minioClient, err := minio.New(s.endpoint, s.accessKey, s.secretKey, false)
 	if err != nil {
 		log.Fatalln(err)
 		return err
 	}
 
 	// Upload the zip file
-	objectName := "index.html"
-	contentType := "text/html"
 
 	// Upload the zip file with FPutObject
-	n, err := minioClient.FPutObject(bucketName, objectName, filePath, minio.PutObjectOptions{ContentType: contentType})
+	n, err := minioClient.PutObject(bucketName, objectName, reader, -1, minio.PutObjectOptions{ContentType: "text/html"})
 	if err != nil {
 		log.Fatalln(err)
 		return err
