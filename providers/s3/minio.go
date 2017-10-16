@@ -1,10 +1,12 @@
 package s3
 
 import (
+	"fmt"
 	"io"
 	"log"
 
 	"github.com/minio/minio-go"
+	"github.com/minio/minio-go/pkg/policy"
 )
 
 type (
@@ -71,5 +73,13 @@ func (s *S3) CreateBucket(bucketName string) error {
 			log.Fatalln(err)
 		}
 	}
+
+	//set policy for read access
+	err = minioClient.SetBucketPolicy(bucketName, "*", policy.BucketPolicyReadOnly)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+
 	return nil
 }
