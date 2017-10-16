@@ -1,14 +1,20 @@
 package main
 
 import (
+	"fmt"
+	"io"
+	"io/ioutil"
+
 	"github.com/4406arthur/blog-daddy/adapters/git"
 	"github.com/4406arthur/blog-daddy/providers/s3"
+	"gopkg.in/russross/blackfriday.v2"
 
-	"github.com/gin-gonic/gin"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
 	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
 )
 
 type (
@@ -17,6 +23,21 @@ type (
 		ModTime string
 	}
 )
+
+type MarkdownParser struct {
+	reader io.Reader
+}
+
+func NewMarkdownParser(r io.Reader) *MarkdownParser {
+	return &MarkdownParser{r}
+}
+
+func (m *MarkdownParser) Read(p []byte) (n int, err error) {
+	n, err = m.reader.Read(p)
+	copy(p, blackfriday.Run(p))
+
+	return n, err
+}
 
 func main() {
 	viper.SetConfigName("config")
@@ -44,6 +65,15 @@ func main() {
 				panic(err)
 			}
 			log.Printf("You have %s\n", mds)
+
+			resp, _ := http.Get(mds[0].Download_Url)
+			defer resp.Body.Close()
+
+			m := NewMarkdownParser(resp.Body)
+
+			html, _ := ioutil.ReadAll(m)
+
+			fmt.Println(string(html))
 
 			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
 
