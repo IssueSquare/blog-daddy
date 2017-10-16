@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"io"
-	"io/ioutil"
 
 	"github.com/4406arthur/blog-daddy/adapters/git"
 	"github.com/4406arthur/blog-daddy/providers/s3"
@@ -71,9 +69,9 @@ func main() {
 
 			m := NewMarkdownParser(resp.Body)
 
-			html, _ := ioutil.ReadAll(m)
+			// html, _ := ioutil.ReadAll(m)
 
-			fmt.Println(string(html))
+			// fmt.Println(string(html))
 
 			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
 
@@ -84,7 +82,7 @@ func main() {
 			}
 
 			//upload html to s3 bucket
-			//err := S3Provider.Upload("./tmp/"+u.User+"./index.html")
+			err = S3Provider.Upload(u.User, "index.html", m)
 
 			c.JSON(http.StatusOK, gin.H{"url": "https://s3.arthurma.com.tw/" + u.User + "/index.html"})
 		}
