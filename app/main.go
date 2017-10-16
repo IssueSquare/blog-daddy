@@ -4,9 +4,8 @@ import (
 	"io"
 	"regexp"
 
-	"github.com/4406arthur/blog-daddy/adapters/git"
-	"github.com/4406arthur/blog-daddy/providers/s3"
-	"gopkg.in/russross/blackfriday.v2"
+	"github.com/IssueSquare/blog-daddy/adapters/git"
+	"github.com/IssueSquare/blog-daddy/providers/s3"
 
 	"log"
 	"net/http"
@@ -14,6 +13,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	"gopkg.in/russross/blackfriday.v2"
 )
 
 type (
