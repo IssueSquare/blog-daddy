@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"regexp"
 
 	"github.com/4406arthur/blog-daddy/adapters/git"
 	"github.com/4406arthur/blog-daddy/providers/s3"
@@ -64,25 +65,31 @@ func main() {
 			}
 			log.Printf("You have %s\n", mds)
 
-			resp, _ := http.Get(mds[0].Download_Url)
-			defer resp.Body.Close()
-
-			m := NewMarkdownParser(resp.Body)
-
-			// html, _ := ioutil.ReadAll(m)
-
-			// fmt.Println(string(html))
-
-			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
-
 			//create user's bucket
+			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
 			err2 := S3Provider.CreateBucket(u.User)
 			if err2 != nil {
 				panic(err)
 			}
 
-			//upload html to s3 bucket
-			err = S3Provider.Upload(u.User, "index.html", m)
+			for _, md := range mds {
+				if md.Type != "file" {
+					continue
+				}
+
+				resp, err := http.Get(md.Download_Url)
+
+				if err != nil {
+					panic(err)
+				}
+
+				defer resp.Body.Close()
+
+				m := NewMarkdownParser(resp.Body)
+
+				// upload html to s3 bucket
+				err = S3Provider.Upload(u.User, regexp.MustCompile("\\.[^.]+$").ReplaceAllString(md.Name, ".html"), m)
+			}
 
 			c.JSON(http.StatusOK, gin.H{"url": "https://s3.arthurma.com.tw/" + u.User + "/index.html"})
 		}
