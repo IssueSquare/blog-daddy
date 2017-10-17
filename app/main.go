@@ -67,13 +67,9 @@ func main() {
 
 			//create user's bucket
 			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
+			
 			err = S3Provider.CreateBucket(u.User)
 			if err != nil {
-				panic(err)
-			//create user's bucket
-			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
-			err2 := S3Provider.CreateBucket(u.User)
-			if err2 != nil {
 				panic(err)
 			}
 
