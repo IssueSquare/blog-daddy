@@ -70,10 +70,24 @@ func main() {
 			err = S3Provider.CreateBucket(u.User)
 			if err != nil {
 				panic(err)
+			//create user's bucket
+			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
+			err2 := S3Provider.CreateBucket(u.User)
+			if err2 != nil {
+				panic(err)
 			}
 
 			for _, md := range mds {
-				resp, _ := http.Get(md.Download_Url)
+				if md.Type != "file" {
+					continue
+				}
+
+				resp, err := http.Get(md.Download_Url)
+
+				if err != nil {
+					panic(err)
+				}
+
 				defer resp.Body.Close()
 
 				m := NewMarkdownParser(resp.Body)
