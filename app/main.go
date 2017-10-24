@@ -7,7 +7,6 @@ import (
 	"github.com/IssueSquare/blog-daddy/adapters/git"
 	"github.com/IssueSquare/blog-daddy/providers/s3"
 
-	"log"
 	"net/http"
 	"strings"
 
@@ -63,20 +62,16 @@ func main() {
 			if err != nil {
 				panic(err)
 			}
-			log.Printf("You have %s\n", mds)
 
 			//create user's bucket
 			S3Provider := s3.NewS3Provider(viper.GetString("S3Endpoint"), viper.GetString("S3AccessKey"), viper.GetString("S3SecretKey"))
-			
+
 			err = S3Provider.CreateBucket(u.User)
 			if err != nil {
 				panic(err)
 			}
 
 			for _, md := range mds {
-				if md.Type != "file" {
-					continue
-				}
 
 				resp, err := http.Get(md.Download_Url)
 
@@ -88,8 +83,8 @@ func main() {
 
 				m := NewMarkdownParser(resp.Body)
 
-				// upload html to s3 bucket
-				err = S3Provider.Upload(u.User, regexp.MustCompile("\\.[^.]+$").ReplaceAllString(md.Name, ".html"), m)
+				//TODO upload really index.html
+				err = S3Provider.Upload(u.User, regexp.MustCompile("\\.[^.]+$").ReplaceAllString(md.Path, ".html"), m)
 			}
 
 			c.JSON(http.StatusOK, gin.H{"url": "https://s3.arthurma.com.tw/" + u.User + "/index.html"})
