@@ -1,0 +1,217 @@
+{
+	"ImportPath": "github.com/IssueSquare/blog-daddy/app",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/IssueSquare/blog-daddy/adapters/git",
+			"Rev": "49296bbd24c8b7c5aea6ecc7eded95e66b7f86c4"
+		},
+		{
+			"ImportPath": "github.com/IssueSquare/blog-daddy/providers/s3",
+			"Rev": "49296bbd24c8b7c5aea6ecc7eded95e66b7f86c4"
+		},
+		{
+			"ImportPath": "github.com/fsnotify/fsnotify",
+			"Comment": "v1.4.2-6-g4da3e2c",
+			"Rev": "4da3e2cfbabc9f751898f250b49f2439785783a1"
+		},
+		{
+			"ImportPath": "github.com/gin-contrib/sse",
+			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.2-110-gb1ee49d",
+			"Rev": "b1ee49de8c80ea72acf019315d3dffc0ce6e06ff"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.2-110-gb1ee49d",
+			"Rev": "b1ee49de8c80ea72acf019315d3dffc0ce6e06ff"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/json",
+			"Comment": "v1.2-110-gb1ee49d",
+			"Rev": "b1ee49de8c80ea72acf019315d3dffc0ce6e06ff"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
+			"Comment": "v1.2-110-gb1ee49d",
+			"Rev": "b1ee49de8c80ea72acf019315d3dffc0ce6e06ff"
+		},
+		{
+			"ImportPath": "github.com/go-ini/ini",
+			"Comment": "v1.30.0",
+			"Rev": "5b3e00af70a9484542169a976dcab8d03e601a17"
+		},
+		{
+			"ImportPath": "github.com/golang-collections/collections/stack",
+			"Rev": "604e922904d35e97f98a774db7881f049cd8d970"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "ab9f9a6dab164b7d1246e0e688b0ab7b94d8553e"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/ast",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/parser",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/scanner",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/strconv",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/hcl/token",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/json/parser",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/json/scanner",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/hcl/json/token",
+			"Rev": "42e33e2d55a0ff1d6263f738896ea8c13571a8d0"
+		},
+		{
+			"ImportPath": "github.com/json-iterator/go",
+			"Comment": "1.0.2-6-gabe3c40",
+			"Rev": "abe3c4016bd3f50fa9c5b0e909641e2b8370b0cf"
+		},
+		{
+			"ImportPath": "github.com/magiconair/properties",
+			"Comment": "v1.7.3-4-g8d7837e",
+			"Rev": "8d7837e64d3c1ee4e54a880c5a920ab4316fc90a"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Comment": "v0.0.2",
+			"Rev": "fc9e8d8ef48496124e79ae0df75490096eccf6fe"
+		},
+		{
+			"ImportPath": "github.com/minio/go-homedir",
+			"Rev": "21304a94172ae3a09dee2cd86a12fb6f842138c7"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go/pkg/credentials",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go/pkg/encrypt",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go/pkg/policy",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go/pkg/s3signer",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go/pkg/s3utils",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/minio/minio-go/pkg/set",
+			"Comment": "3.0.3-18-gecb4c85",
+			"Rev": "ecb4c85aa987727e786ce89e207e8380fd886026"
+		},
+		{
+			"ImportPath": "github.com/mitchellh/mapstructure",
+			"Rev": "d0303fe809921458f417bcf828397a65db30a7e4"
+		},
+		{
+			"ImportPath": "github.com/pelletier/go-toml",
+			"Comment": "v1.0.1-2-g2009e44",
+			"Rev": "2009e44b6f182e34d8ce081ac2767622937ea3d4"
+		},
+		{
+			"ImportPath": "github.com/shurcooL/sanitized_anchor_name",
+			"Rev": "86672fcb3f950f35f2e675df2240550f2a50762f"
+		},
+		{
+			"ImportPath": "github.com/spf13/afero",
+			"Rev": "e67d870304c4bca21331b02f414f970df13aa694"
+		},
+		{
+			"ImportPath": "github.com/spf13/afero/mem",
+			"Rev": "e67d870304c4bca21331b02f414f970df13aa694"
+		},
+		{
+			"ImportPath": "github.com/spf13/cast",
+			"Comment": "v1.1.0",
+			"Rev": "acbeb36b902d72a7a4c18e8f3241075e7ab763e4"
+		},
+		{
+			"ImportPath": "github.com/spf13/jwalterweatherman",
+			"Rev": "12bd96e66386c1960ab0f74ced1362f66f552f7b"
+		},
+		{
+			"ImportPath": "github.com/spf13/pflag",
+			"Comment": "v1.0.0-7-ga9789e8",
+			"Rev": "a9789e855c7696159b7db0db7f440b449edf2b31"
+		},
+		{
+			"ImportPath": "github.com/spf13/viper",
+			"Comment": "v1.0.0-2-gd9cca5e",
+			"Rev": "d9cca5ef33035202efb1586825bdbb15ff9ec3ba"
+		},
+		{
+			"ImportPath": "github.com/ugorji/go/codec",
+			"Rev": "5efa3251c7f7d05e5d9704a69a984ec9f1386a40"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "686000749eaec0b8855b8eef5336cf63899fe51d"
+		},
+		{
+			"ImportPath": "golang.org/x/text/transform",
+			"Rev": "c01e4764d870b77f8abe5096ee19ad20d80e8075"
+		},
+		{
+			"ImportPath": "golang.org/x/text/unicode/norm",
+			"Rev": "c01e4764d870b77f8abe5096ee19ad20d80e8075"
+		},
+		{
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.18.2",
+			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+		},
+		{
+			"ImportPath": "gopkg.in/russross/blackfriday.v2",
+			"Comment": "v2.0.0",
+			"Rev": "cadec560ec52d93835bf2f15bd794700d3a2473b"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "25c4ec802a7d637f88d584ab26798e94ad14c13b"
+		}
+	]
+}
