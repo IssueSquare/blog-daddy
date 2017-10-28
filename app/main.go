@@ -15,13 +15,6 @@ import (
 	"gopkg.in/russross/blackfriday.v2"
 )
 
-type (
-	Article struct {
-		Name    string
-		ModTime string
-	}
-)
-
 type MarkdownParser struct {
 	reader io.Reader
 }
@@ -91,9 +84,15 @@ func main() {
 		}
 	})
 
-	/*router.POST("/webhook", func(c *gin.Context) {
-
-	})*/
+	//Webhook Endpint used to update/modify S3 doc contents
+	router.POST("/webhook", func(c *gin.Context) {
+		//payload from push event
+		payload, err := c.GetRawData()
+		if err != nil {
+			panic(err)
+		}
+		c.JSON(http.StatusOK, gin.H{"payload": payload})
+	})
 
 	router.Run(":8080")
 }
