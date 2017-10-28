@@ -40,7 +40,7 @@ func main() {
 	}
 
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
+	//router.LoadHTMLGlob("templates/*")
 
 	router.POST("/setup", func(c *gin.Context) {
 		var u git.User
