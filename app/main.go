@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"regexp"
 
@@ -86,11 +87,20 @@ func main() {
 
 	//Webhook Endpint used to update/modify S3 doc contents
 	router.POST("/webhook", func(c *gin.Context) {
+		var payload map[string]interface{}
 		//payload from push event
-		payload, err := c.GetRawData()
+		c.BindJSON(&payload)
+
 		if err != nil {
 			panic(err)
 		}
+
+		if val, ok := payload["head_commit"]; ok {
+			//do something here
+			fmt.Println(val.(map[string]interface{})["modified"])
+
+		}
+
 		c.JSON(http.StatusOK, gin.H{"payload": payload})
 	})
 
